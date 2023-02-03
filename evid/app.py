@@ -27,19 +27,16 @@ from evidently.tests.base_test import generate_column_tests
 from evidently.test_preset import DataStabilityTestPreset, NoTargetPerformanceTestPreset
 from evidently.tests import *
 
-
 """# New section"""
 
 df = pd.read_csv(
-    r"C:\Users\INSUJUL\Downloads\evid\evid\Indian Liver Patient Dataset (ILPD).csv", encoding='unicode_escape')
-dummy = pd.read_csv(r"C:\Users\INSUJUL\Downloads\evid\evid\dummyyy.csv")
-
+    r"C:\Users\INLAGOP\VS Code\Codes\implementation_evidently-main\evid\Indian Liver Patient Dataset (ILPD).csv",
+    encoding='unicode_escape')
+dummy = pd.read_csv(r"C:\Users\INLAGOP\VS Code\Codes\implementation_evidently-main\evid\dummyyy.csv")
 
 df.rename(columns={"65": "age", "Female": "gender", "0.7": "TB", "0.1": "DB", "187": "Alpkhos",
-          "16": "SGPT", "18": "SGOT", "6.8": "TP", "3.3": "ALB", "0.9": "AG", "1": "target"}, inplace=True)
+                   "16": "SGPT", "18": "SGOT", "6.8": "TP", "3.3": "ALB", "0.9": "AG", "1": "target"}, inplace=True)
 df
-
-
 
 column_mapping = ColumnMapping()
 column_mapping.target = "target"
@@ -50,6 +47,7 @@ column_mapping.task = 'classification'
 column_mapping.prediction = "prediction"
 column_mapping.target_names = ["1", "2"]
 
+
 def get_report(current):
     report = Report(metrics=[
         DataDriftPreset(),
@@ -58,10 +56,11 @@ def get_report(current):
     ])
 
     report.run(reference_data=df, current_data=current,
-           column_mapping=column_mapping)
-    
+               column_mapping=column_mapping)
+
     print(report.json())
-    report.save_html('file.html')
+    report.save_html(name)
 
 
+name = "file.html"
 get_report(dummy)

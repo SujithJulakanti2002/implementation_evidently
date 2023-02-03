@@ -1,3 +1,4 @@
 evidently
 numpy
 pandas
+bs4
