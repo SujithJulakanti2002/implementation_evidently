@@ -14,14 +14,15 @@ from evidently.tests.base_test import generate_column_tests
 from evidently.test_preset import DataStabilityTestPreset, NoTargetPerformanceTestPreset
 from evidently.tests import *
 import os
-
+from refresh import add_refresh
 
 
 
 df = pd.read_csv(
-    os.getcwd() + '\iris.csv', encoding='unicode_escape')
-html_path = 'out.html'
-path_to_new = r'C:\Users\INDHK6\Desktop\Model Monitoring on Edge\Demo v1\implementation_evidently\evid\dummyyy.csv'
+    os.getcwd() + '/iris.csv', encoding='unicode_escape')
+html_path = '/var/temp/index.html'
+path_to_new = "/var/temp/currentdata.csv"
+# path_to_new = os.getcwd() + '/dummyyy.csv'
 
 dummy = pd.read_csv(path_to_new)
 
@@ -51,7 +52,9 @@ def get_report(current):
     
     # print(report.json())
     report.save_html(html_path)
+    add_refresh(html_path=html_path)
 
+    
 if __name__ == "__main__":
     get_report(dummy)
 
