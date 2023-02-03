@@ -17,6 +17,7 @@ import os
 
 
 
+
 df = pd.read_csv(
     os.getcwd() + '\iris.csv', encoding='unicode_escape')
 html_path = 'out.html'
@@ -36,6 +37,7 @@ column_mapping.prediction = "prediction"
 column_mapping.target_names = ["setosa","versicolour", "virginica"]
 
 
+
 def get_report(current):
     report = Report(metrics=[
         DataDriftPreset(),
@@ -44,6 +46,7 @@ def get_report(current):
     ])
 
     report.run(reference_data=df, current_data=current,
+
            column_mapping=column_mapping)
     
     # print(report.json())
@@ -51,3 +54,4 @@ def get_report(current):
 
 if __name__ == "__main__":
     get_report(dummy)
+
