@@ -30,9 +30,9 @@ from evidently.tests import *
 """# New section"""
 
 df = pd.read_csv(
-    r"C:\Users\INLAGOP\VS Code\Codes\implementation_evidently-main\evid\Indian Liver Patient Dataset (ILPD).csv",
+    r"Indian Liver Patient Dataset (ILPD).csv",
     encoding='unicode_escape')
-dummy = pd.read_csv(r"C:\Users\INLAGOP\VS Code\Codes\implementation_evidently-main\evid\dummyyy.csv")
+dummy = pd.read_csv(r"dummyyy.csv")
 
 df.rename(columns={"65": "age", "Female": "gender", "0.7": "TB", "0.1": "DB", "187": "Alpkhos",
                    "16": "SGPT", "18": "SGOT", "6.8": "TP", "3.3": "ALB", "0.9": "AG", "1": "target"}, inplace=True)
