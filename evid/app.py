@@ -33,9 +33,10 @@ import json
 """# New section"""
 
 df = pd.read_csv(
-    r"Indian Liver Patient Dataset (ILPD).csv",
-    encoding='unicode_escape')
-dummy = pd.read_csv(r"dummyyy.csv")
+    os.getcwd() + '/iris.csv', encoding='unicode_escape')
+html_path = '/var/temp/index.html'
+path_to_new = "/var/temp/currentdata.csv"
+# path_to_new = os.getcwd() + '/dummyyy.csv'
 
 df.rename(columns={"65": "age", "Female": "gender", "0.7": "TB", "0.1": "DB", "187": "Alpkhos",
                    "16": "SGPT", "18": "SGOT", "6.8": "TP", "3.3": "ALB", "0.9": "AG", "1": "target"}, inplace=True)
@@ -59,19 +60,15 @@ def get_report(current):
     ])
 
     report.run(reference_data=df, current_data=current,
-               column_mapping=column_mapping)
 
-    data = report.json()
+           column_mapping=column_mapping)
+    
+    # print(report.json())
+    report.save_html(html_path)
+    add_refresh(html_path=html_path)
 
-    print(data)
-
-    with open('json_file.json', 'w') as jfile:
-        jfile.write(data)
-
-    report.save_html(name)
-
-
-name = "file.html"
-get_report(dummy)
+    
+if __name__ == "__main__":
+    get_report(dummy)
 
 database.func()
