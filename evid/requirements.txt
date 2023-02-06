@@ -1,6 +1,0 @@
-evidently~=0.2.2
-numpy~=1.24.1
-pandas~=1.5.3
-bs4~=0.0.1
-beautifulsoup4~=4.11.2
-pymongo~=4.3.3
